@@ -8,18 +8,17 @@ export function generateStaticParams() {
   }));
 }
 
-export default async function GuestPage({ params }: { params: { id: string } }) {
-  // Ensure params.id is available
-  const id = await Promise.resolve(params.id);
-  if (!id) {
-    notFound();
-  }
+interface Props {
+  params: Promise<{ id: string }>;
+}
 
+export default async function GuestPage({ params }: Props) {
+  const { id } = await params;
   const guest = guests.find(g => g.id === id);
 
   if (!guest) {
     notFound();
   }
 
-  return <GuestPageContent id={params.id} />;
+  return <GuestPageContent id={id} />;
 } 
