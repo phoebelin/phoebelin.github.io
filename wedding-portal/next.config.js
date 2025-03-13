@@ -6,7 +6,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  assetPrefix: 'https://phoebelin.github.io',
+  assetPrefix: '/',
   trailingSlash: true,
 };
 
